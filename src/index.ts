@@ -1,7 +1,7 @@
 import { Octokit } from '@octokit/rest';
 import { createPatch, diffLines } from 'diff';
 import { config as loadDotenv } from 'dotenv';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import fetch from 'node-fetch';
 import { scheduleJob } from 'node-schedule';
 import pretty from 'pretty';
@@ -29,13 +29,17 @@ let lastBody: string;
 async function pollWebsite(): Promise<void> {
     const text = await getBody();
     const diff = diffLines(lastBody, text);
-    const dateStamp = moment().format('MMMM Do YYYY, h:mm:ss a');
+    const dateStamp = moment()
+        .tz('America/St_Johns')
+        .format('MMMM Do YYYY, h:mm:ss a');
     if (diff.length === 1) {
         console.log(dateStamp, 'No changes detected.');
         return;
     }
     const patch = createPatch('COVID-19.html', lastBody, text);
-    const filenameDateStamp = moment().format('MMMM_Do_YYYY_h_mm_ss_a');
+    const filenameDateStamp = moment()
+        .tz('America/St_Johns')
+        .format('MMMM_Do_YYYY_h_mm_ss_a');
 
     const filename = `COVID-19_${filenameDateStamp}.patch`;
     const gist = await octokit.gists.create({
