@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  mun_covid19_bot:
+    build: .
+    env_file:
+      - ".env"
+    restart: always
