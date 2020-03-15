@@ -19,7 +19,10 @@
   },
   "homepage": "https://github.com/nint8835/mun-covid-19-bot#readme",
   "devDependencies": {
+    "@types/diff": "^4.0.2",
     "@types/node": "^13.9.1",
+    "@types/node-fetch": "^2.5.5",
+    "@types/pretty": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
     "eslint": "^6.8.0",
@@ -27,5 +30,14 @@
     "eslint-plugin-prettier": "^3.1.2",
     "prettier": "^1.19.1",
     "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@octokit/rest": "^17.1.0",
+    "diff": "^4.0.2",
+    "dotenv": "^8.2.0",
+    "moment": "^2.24.0",
+    "node-fetch": "^2.6.0",
+    "pretty": "^2.0.0",
+    "webhook-discord": "^3.5.1"
   }
 }
