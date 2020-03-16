@@ -19,7 +19,8 @@ async function getBody(): Promise<string> {
         pretty(
             (await content.text())
                 .replace(/(\w*<meta name="\w{2}" content="[\d.]*" \/>)/g, '')
-                .replace(/data-content=".*"/g, ''),
+                .replace(/data-content=".*"/g, '')
+                .replace(/\?\d*/g, ''),
         ) + '\n'
     );
 }
